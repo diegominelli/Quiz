@@ -31,6 +31,7 @@ function showQuestion() {
       item.addEventListener("click", optionClickEvent);
     });
   } else {
+    finishQuiz();
   }
 }
 
@@ -43,4 +44,14 @@ function optionClickEvent(e) {
 
   currentQuestion++;
   showQuestion();
+}
+
+function finishQuiz() {
+  let points = Math.floor((correctAnswers / questions.length) * 100);
+
+  document.querySelector("scorePct").innerHTML = `Acertou ${points}%`;
+
+  document.querySelector(".scoreArea").style.display = "block";
+  document.querySelector(".questionArea").style.display = "none";
+  document.querySelector(".progress--bar").style.width = "100%";
 }
